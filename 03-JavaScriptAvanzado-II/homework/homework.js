@@ -44,14 +44,14 @@ otra vez cálculos que ya se hicieron anteriormente.
 function cacheFunction(cb) {
   //clousure
   //cachefuction actue como memoeria
-  var cache =[];
+  var cache ={};
     return function(arg){
     
-      if (arg.hasOwnProperty([cache])){
-        return cb
-      } else{
-        return arg}
-      
+      if (cache.hasOwnProperty(arg)){
+        return cache[arg]
+      } else {
+      cache[arg] = cb(arg)}
+      return cache[arg]
     }
 }
 
